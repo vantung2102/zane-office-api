@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: user_name
+  password: password
+
+development:
+  <<: *default
+  database: zane_office_development
+
+test:
+  <<: *default
+  database: zane_office_test
+
+production:
+  <<: *default
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
+  host: <%= ENV['HOSTNAME'] %>
+  port: <%= ENV['PORT'] %>
